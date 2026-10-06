@@ -156,42 +156,6 @@
                         </template>
                     </InputPanelUI>
                 </TestSourceLinkedCard>
-
-                <!-- 优化工作区 -->
-                <TestSourceLinkedCard
-                    :style="{ flex: 1, minHeight: '200px', overflow: 'hidden' }"
-                    content-style="height: 100%; max-height: 100%; overflow: hidden;"
-                    :feedback-key="sourceAreaFeedback.workspace.key"
-                    :feedback-tone="sourceAreaFeedback.workspace.tone"
-                    :source-tone="sourceAreaFeedback.workspace.sourceTone"
-                >
-                    <PromptPanelUI
-                        test-id="basic-user"
-                        ref="promptPanelRef"
-                        v-model:optimized-prompt="optimizedPromptModel"
-                        :reasoning="unwrappedLogicProps.optimizedReasoning"
-                        :original-prompt="promptModel"
-                        :is-optimizing="unwrappedLogicProps.isOptimizing"
-                        :is-iterating="unwrappedLogicProps.isIterating"
-                        v-model:selected-iterate-template="selectedIterateTemplate"
-                        :versions="unwrappedLogicProps.currentVersions"
-                        :current-version-id="unwrappedLogicProps.currentVersionId"
-                        :source-feedback-key="sourceAreaFeedback.workspace.key"
-                        :source-feedback-tone="sourceAreaFeedback.workspace.tone"
-                        :source-feedback-version="sourceAreaFeedback.workspace.resolvedVersion"
-                        optimization-mode="user"
-                        :advanced-mode-enabled="false"
-                        :show-preview="false"
-                        @iterate="handleIterate"
-                        @openTemplateManager="handleOpenTemplateManager"
-                        @switchVersion="logic.handleSwitchVersion"
-                        @switchToV0="logic.handleSwitchToV0"
-                        @save-favorite="handleSaveFavorite"
-                        @apply-improvement="handleApplyImprovement"
-                        @apply-patch="handleApplyPatch"
-                        @save-local-edit="handleSaveLocalEdit"
-                    />
-                </TestSourceLinkedCard>
                 </NFlex>
             </div>
 
@@ -209,6 +173,42 @@
             <!-- 右侧：测试区域 -->
             <div ref="testPaneRef" class="split-pane" style="min-width: 0; height: 100%; overflow: hidden;">
                 <NFlex vertical :style="{ height: '100%', gap: '12px' }">
+                    <!-- 优化工作区（输出对比区） -->
+                    <TestSourceLinkedCard
+                        :style="{ flexShrink: 0, height: '320px', minHeight: '220px', overflow: 'hidden' }"
+                        content-style="height: 100%; max-height: 100%; overflow: hidden;"
+                        :feedback-key="sourceAreaFeedback.workspace.key"
+                        :feedback-tone="sourceAreaFeedback.workspace.tone"
+                        :source-tone="sourceAreaFeedback.workspace.sourceTone"
+                    >
+                        <PromptPanelUI
+                            test-id="basic-user"
+                            ref="promptPanelRef"
+                            v-model:optimized-prompt="optimizedPromptModel"
+                            :reasoning="unwrappedLogicProps.optimizedReasoning"
+                            :original-prompt="promptModel"
+                            :is-optimizing="unwrappedLogicProps.isOptimizing"
+                            :is-iterating="unwrappedLogicProps.isIterating"
+                            v-model:selected-iterate-template="selectedIterateTemplate"
+                            :versions="unwrappedLogicProps.currentVersions"
+                            :current-version-id="unwrappedLogicProps.currentVersionId"
+                            :source-feedback-key="sourceAreaFeedback.workspace.key"
+                            :source-feedback-tone="sourceAreaFeedback.workspace.tone"
+                            :source-feedback-version="sourceAreaFeedback.workspace.resolvedVersion"
+                            optimization-mode="user"
+                            :advanced-mode-enabled="false"
+                            :show-preview="false"
+                            @iterate="handleIterate"
+                            @openTemplateManager="handleOpenTemplateManager"
+                            @switchVersion="logic.handleSwitchVersion"
+                            @switchToV0="logic.handleSwitchToV0"
+                            @save-favorite="handleSaveFavorite"
+                            @apply-improvement="handleApplyImprovement"
+                            @apply-patch="handleApplyPatch"
+                            @save-local-edit="handleSaveLocalEdit"
+                        />
+                    </TestSourceLinkedCard>
+
                     <!-- 顶部：列数与全局操作 -->
                     <NCard size="small" :style="{ flexShrink: 0 }">
                         <div class="test-area-top">

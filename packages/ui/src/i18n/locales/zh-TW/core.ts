@@ -185,7 +185,8 @@ const messages = {
     "blue": "藍色",
     "classic": "米杏",
     "green": "綠色",
-    "purple": "紫色"
+    "purple": "紫色",
+    "gold": "鎏金"
   },
   "toast": {
     "error": {

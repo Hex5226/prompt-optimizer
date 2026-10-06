@@ -6,7 +6,7 @@ import { pinia } from '../plugins/pinia'
 import { useGlobalSettings } from '../stores/settings/useGlobalSettings'
 
 // 当前主题ID
-export const currentThemeId = ref<string>('light')
+export const currentThemeId = ref<string>('gold')
 
 // 主题类型定义
 export interface ThemeConfig {
@@ -583,6 +583,152 @@ export const naiveThemeConfigs: Record<string, ThemeConfig> = {
         optionColorHover: '#1f5f49',
         optionColorActive: '#236b52',
         borderColor: 'rgba(63, 210, 180, 0.32)'
+      }
+    }
+  },
+
+  gold: {
+    id: 'gold',
+    labelKey: 'theme.gold',
+    naiveTheme: darkTheme,
+    themeOverrides: {
+      common: {
+        primaryColor: '#d4af37',
+        primaryColorHover: '#e3c25a',
+        primaryColorPressed: '#b8942f',
+        primaryColorSuppl: '#f0d98c',
+        bodyColor: '#0d0b08',
+        cardColor: '#17130c',
+        modalColor: '#17130c',
+        popoverColor: '#17130c',
+        tableColor: '#191410',
+        tableHeaderColor: '#201a10',
+        inputColor: '#1b150d',
+        codeColor: '#201a10',
+        tabColor: '#201a10',
+        actionColor: '#201a10',
+        textColorBase: '#f5efdd',
+        textColor1: 'rgba(245, 239, 221, 0.96)',
+        textColor2: 'rgba(245, 239, 221, 0.82)',
+        textColor3: 'rgba(245, 239, 221, 0.6)',
+        textColorDisabled: 'rgba(245, 239, 221, 0.4)',
+        placeholderColor: 'rgba(212, 175, 55, 0.62)',
+        placeholderColorDisabled: 'rgba(212, 175, 55, 0.4)',
+        iconColor: 'rgba(240, 217, 140, 0.75)',
+        iconColorHover: 'rgba(240, 217, 140, 0.88)',
+        iconColorPressed: '#f5efdd',
+        iconColorDisabled: 'rgba(240, 217, 140, 0.45)',
+        borderColor: 'rgba(212, 175, 55, 0.38)',
+        dividerColor: 'rgba(212, 175, 55, 0.22)',
+        scrollbarColor: 'rgba(184, 148, 47, 0.35)',
+        scrollbarColorHover: 'rgba(212, 175, 55, 0.55)',
+        closeIconColor: 'rgba(240, 217, 140, 0.7)',
+        closeIconColorHover: 'rgba(240, 217, 140, 0.88)',
+        closeIconColorPressed: '#f5efdd',
+        clearColor: 'rgba(245, 239, 221, 0.5)',
+        clearColorHover: 'rgba(245, 239, 221, 0.66)',
+        clearColorPressed: 'rgba(245, 239, 221, 0.82)',
+        successColor: '#3dd68c',
+        successColorHover: '#2fb973',
+        successColorPressed: '#258f59',
+        successColorSuppl: '#174f3b',
+        errorColor: '#ff6b6b',
+        errorColorHover: '#f05252',
+        errorColorPressed: '#c73f3f',
+        errorColorSuppl: '#4d2020'
+      },
+      Button: {
+        textColorPrimary: '#0d0b08',
+        textColorHoverPrimary: '#0d0b08',
+        textColorPressedPrimary: '#0d0b08',
+        textColorFocusPrimary: '#0d0b08',
+        textColorDisabledPrimary: 'rgba(13, 11, 8, 0.82)',
+        colorPrimary: '#f0d98c',
+        colorHoverPrimary: '#f6e6b0',
+        colorPressedPrimary: '#e3c25a',
+        colorFocusPrimary: '#f0d98c',
+        colorDisabledPrimary: '#8f7a3a',
+        borderPrimary: '1px solid #f0d98c',
+        borderHoverPrimary: '1px solid #f6e6b0',
+        borderPressedPrimary: '1px solid #e3c25a',
+        borderFocusPrimary: '1px solid #f0d98c',
+        borderDisabledPrimary: '1px solid rgba(240, 217, 140, 0.35)',
+        rippleColorPrimary: 'rgba(240, 217, 140, 0.35)',
+        textColor: 'rgba(245, 239, 221, 0.88)',
+        textColorHover: '#f5efdd',
+        textColorPressed: '#e3c25a',
+        color: '#1b150d',
+        colorHover: '#201a10',
+        colorPressed: '#181206',
+        border: '1px solid rgba(212, 175, 55, 0.32)',
+        borderHover: '1px solid rgba(212, 175, 55, 0.5)',
+        borderPressed: '1px solid rgba(212, 175, 55, 0.62)'
+      },
+      Input: {
+        color: '#1b150d',
+        colorDisabled: '#161109',
+        colorFocus: '#201a10',
+        textColor: '#f5efdd',
+        textColorDisabled: 'rgba(245, 239, 221, 0.55)',
+        placeholderColor: 'rgba(212, 175, 55, 0.62)',
+        placeholderColorDisabled: 'rgba(212, 175, 55, 0.4)',
+        iconColor: 'rgba(240, 217, 140, 0.75)',
+        iconColorHover: '#e3c25a',
+        iconColorPressed: '#f5efdd',
+        iconColorDisabled: 'rgba(240, 217, 140, 0.4)',
+        clearColor: 'rgba(245, 239, 221, 0.5)',
+        clearColorHover: 'rgba(245, 239, 221, 0.66)',
+        clearColorPressed: 'rgba(245, 239, 221, 0.82)',
+        border: '1px solid rgba(212, 175, 55, 0.36)',
+        borderDisabled: '1px solid rgba(212, 175, 55, 0.2)',
+        borderHover: '1px solid rgba(212, 175, 55, 0.55)',
+        borderFocus: '1px solid #f0d98c',
+        boxShadowFocus: '0 0 0 2px rgba(240, 217, 140, 0.16)',
+        loadingColor: '#f0d98c',
+        suffixTextColor: 'rgba(245, 239, 221, 0.8)',
+        prefixTextColor: 'rgba(245, 239, 221, 0.8)'
+      },
+      Card: {
+        color: '#17130c',
+        colorModal: '#17130c',
+        colorTarget: '#17130c',
+        textColor: '#f5efdd',
+        titleTextColor: '#f0d98c',
+        borderColor: 'rgba(212, 175, 55, 0.3)',
+        actionColor: '#201a10',
+        closeIconColor: 'rgba(245, 239, 221, 0.7)',
+        closeIconColorHover: '#e3c25a',
+        closeIconColorPressed: '#f5efdd',
+        boxShadow: '0 18px 40px rgba(0, 0, 0, 0.5)'
+      },
+      Tabs: {
+        tabColor: '#201a10',
+        tabTextColor: 'rgba(245, 239, 221, 0.78)',
+        tabTextColorActive: '#f0d98c',
+        tabTextColorHover: '#f5efdd',
+        tabBorderColor: 'rgba(212, 175, 55, 0.28)',
+        tabBorderColorActive: '#d4af37',
+        tabBorderColorHover: 'rgba(212, 175, 55, 0.5)'
+      },
+      Radio: {
+        buttonColor: '#1b150d',
+        buttonColorActive: 'rgba(212, 175, 55, 0.24)',
+        buttonBorderColor: 'rgba(212, 175, 55, 0.3)',
+        buttonBorderColorActive: '#d4af37',
+        buttonTextColorActive: '#f0d98c',
+        buttonTextColorHover: '#f5efdd',
+        textColor: 'rgba(245, 239, 221, 0.82)',
+        dotColorActive: '#f0d98c'
+      },
+      Dropdown: {
+        color: '#17130c',
+        optionTextColor: 'rgba(245, 239, 221, 0.86)',
+        optionTextColorHover: '#f5efdd',
+        optionColorHover: 'rgba(212, 175, 55, 0.14)',
+        optionColorActive: 'rgba(212, 175, 55, 0.2)',
+        optionColorActiveHover: 'rgba(212, 175, 55, 0.26)',
+        borderColor: 'rgba(212, 175, 55, 0.3)',
+        dividerColor: 'rgba(212, 175, 55, 0.2)'
       }
     }
   },

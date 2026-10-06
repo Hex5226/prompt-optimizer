@@ -446,6 +446,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    autoHideMenuBar: true, // P0: hide the native Electron menu bar
     icon: iconPath, // 设置窗口图标
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -458,14 +459,8 @@ function createWindow() {
     applyPageZoomAction(targetWebContents, action);
   };
 
-  Menu.setApplicationMenu(
-    Menu.buildFromTemplate(
-      buildAppMenuTemplate({
-        isMac: process.platform === 'darwin',
-        onPageZoomAction: handlePageZoomAction,
-      })
-    )
-  );
+  // P0: 彻底隐藏桌面版原生菜单栏（不再注册应用菜单）
+  Menu.setApplicationMenu(null);
   mainWindow.webContents.setZoomLevel(DEFAULT_PAGE_ZOOM_LEVEL);
   void mainWindow.webContents
     .setVisualZoomLevelLimits(VISUAL_ZOOM_LIMITS.minimum, VISUAL_ZOOM_LIMITS.maximum)

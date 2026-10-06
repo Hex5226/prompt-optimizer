@@ -222,14 +222,14 @@
                     </NButton>
                     <!-- 优化按钮 -->
                     <NButton
-                        type="primary"
+                        :type="completedFlash ? 'success' : 'primary'"
                         size="medium"
                         :data-testid="`${testIdPrefix}-optimize-button`"
                         @click="$emit('submit')"
                         :loading="loading"
                         :disabled="analyzeLoading || loading || disabled || !modelValue.trim()"
                     >
-                        {{ loading ? loadingText : buttonText }}
+                        {{ completedFlash ? completedText : loading ? loadingText : buttonText }}
                     </NButton>
                 </NSpace>
             </NGridItem>
@@ -251,7 +251,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch, onBeforeUnmount } from 'vue'
 
 import {
     NInput,
@@ -295,6 +295,8 @@ interface Props {
     buttonText: string;
     /** 加载中文本 */
     loadingText: string;
+    /** 完成态文本（三态：默认/加载中/完成） */
+    completedText?: string;
     /** 是否正在加载 */
     loading?: boolean;
     /** 是否禁用 */
@@ -336,6 +338,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
     placeholder: "",
     templateLabel: "",
+    completedText: "优化完成",
     loading: false,
     disabled: false,
     showPreview: false,
@@ -380,6 +383,27 @@ const { isFullscreen, fullscreenValue, openFullscreen } = useFullscreen(
     computed(() => props.modelValue),
     (value) => emit("update:modelValue", value),
 );
+
+// 主按钮三态反馈：默认 → 加载中 → 完成
+const completedFlash = ref(false)
+let completedTimer: ReturnType<typeof setTimeout> | null = null
+
+watch(
+    () => props.loading,
+    (loading, wasLoading) => {
+        if (wasLoading && !loading && props.modelValue.trim()) {
+            completedFlash.value = true
+            if (completedTimer) clearTimeout(completedTimer)
+            completedTimer = setTimeout(() => {
+                completedFlash.value = false
+            }, 3000)
+        }
+    },
+)
+
+onBeforeUnmount(() => {
+    if (completedTimer) clearTimeout(completedTimer)
+})
 
 // 处理变量提取事件
 const handleVariableExtracted = (data: {

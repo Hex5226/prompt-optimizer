@@ -38,7 +38,7 @@ export interface GlobalSettingsState {
 const STORAGE_KEY = 'global-settings/v1'
 
 const createDefaultState = (): GlobalSettingsState => ({
-  selectedThemeId: 'auto',
+  selectedThemeId: 'gold',
   preferredLanguage: 'zh-CN',
   builtinTemplateLanguage: 'zh-CN',
   functionMode: 'basic',
